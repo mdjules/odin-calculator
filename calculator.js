@@ -16,7 +16,26 @@ function divide(a, b) {
 
 let numberOfButtons = 19;
 
-for (let i = 1; i < numberOfButtons; i++) {
+const buttonArray = [
+    'AC', '+/-', '%', '/',
+    7, 8, 9, '*',
+    4, 5, 6, '-',
+    1, 2, 3, '+',
+    0, '.', '='
+];
+
+for (button in buttonArray) {
+    let myButtons = document.createElement('button');
+    myButtons.classList.add('myButtons', `${buttonArray[button]}Button`);
+    myButtons.textContent = `${buttonArray[button]}`;
+    document.getElementById('buttons').appendChild(myButtons);
+
+};
+
+
+
+
+/*for (let i = 1; i < numberOfButtons; i++) {
    let myButtons = document.createElement('button');
    myButtons.classList.add('myButtons');
 
@@ -62,4 +81,5 @@ for (let i = 1; i < numberOfButtons; i++) {
      document.getElementById('buttons').appendChild(myButtons);
 
 
-}
+}*/
+
