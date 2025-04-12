@@ -14,8 +14,6 @@ function divide(a, b) {
     return a / b; 
 };
 
-let numberOfButtons = 19;
-
 const buttonArray = [
     'AC', '+/-', '%', '/',
     7, 8, 9, '*',
@@ -26,7 +24,7 @@ const buttonArray = [
 
 for (button in buttonArray) {
     let myButtons = document.createElement('button');
-    myButtons.classList.add('myButtons', `${buttonArray[button]}Button`);
+    myButtons.classList.add('myButtons', `button${buttonArray[button]}`);
     myButtons.textContent = `${buttonArray[button]}`;
     document.getElementById('buttons').appendChild(myButtons);
 

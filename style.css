@@ -1,0 +1,29 @@
+#container {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    border: 5px solid black;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#display {
+    width: 275px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+#buttons {
+    width: 200px;
+    height: 400px;
+}
+
+.myButtons {
+    width: 50px;
+    height: 50px;
+}
+
+.button0 {
+    width: 100px;
+    height: 50px;
+}
