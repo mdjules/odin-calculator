@@ -14,6 +14,18 @@ function divide(a, b) {
     return a / b; 
 };
 
+function operate(operator, numOne, numTwo) {
+    if (operator == '+') {
+        add(numOne, numTwo);
+    } else if (operator == '-') {
+        subtract(numOne, numTwo);
+    } else if (operator == '*') {
+        multiply(numOne, numTwo);
+    } else if (operator == '/') {
+        divide(numOne, numTwo);
+    }
+};
+
 const buttonArray = [
     'AC', '+/-', '%', '/',
     7, 8, 9, '*',
@@ -29,6 +41,13 @@ for (button in buttonArray) {
     document.getElementById('buttons').appendChild(myButtons);
 
 };
+
+let buttonClick = document.querySelectorAll('.myButtons');
+buttonClick.forEach(button => {
+    button.addEventListener('click', function(){
+        document.getElementById('display').textContent = button.textContent
+    })
+})
 
 
 
