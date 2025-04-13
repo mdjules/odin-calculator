@@ -42,12 +42,17 @@ for (button in buttonArray) {
 
 };
 
+let calculatorArray = [];
+
 let buttonClick = document.querySelectorAll('.myButtons');
 buttonClick.forEach(button => {
     button.addEventListener('click', function(){
         document.getElementById('display').textContent = button.textContent
+        calculatorArray.push(button.textContent);
+
     })
-})
+});
+
 
 
 
