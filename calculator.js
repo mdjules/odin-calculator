@@ -48,18 +48,31 @@ for (button in buttonArray) {
 };
 
 let calculatorArray = [];
+let displayString = "";
 
 let buttonClick = document.querySelectorAll('.myButtons');
 buttonClick.forEach(button => {
     button.addEventListener('click', function(){
-        document.getElementById('display').textContent = button.textContent
-        calculatorArray.push(button.textContent);
+        displayString += button.textContent;
+        document.getElementById('display').textContent = displayString;
+        //calculatorArray.push(button.textContent);
 
     })
 });
 
+let operatorButtonClick = document.querySelectorAll('.button\\/, .button\\+, .button\\-, .button\\*')
+operatorButtonClick.forEach(button => {
+    button.addEventListener('click', function(){
+        calculatorArray.push(displayString.slice(0, -1));
+        calculatorArray.push(displayString.slice(-1));
+        displayString = '';
+
+    })
+})
+
 let solutionClick = document.querySelector(".button\\=");
 solutionClick.addEventListener('click', function() {
+    calculatorArray.push(displayString);
     solution = operate(parseInt(calculatorArray[0]), calculatorArray[1], parseInt(calculatorArray[2]));
     document.getElementById('display').textContent = solution;
     calculatorArray.length = 0;
