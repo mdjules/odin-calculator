@@ -14,16 +14,21 @@ function divide(a, b) {
     return a / b; 
 };
 
-function operate(operator, numOne, numTwo) {
+function operate(numOne, operator, numTwo) {
     if (operator == '+') {
-        add(numOne, numTwo);
+        let operateSolution = add(numOne, numTwo);
+        return operateSolution;
     } else if (operator == '-') {
-        subtract(numOne, numTwo);
+        let operateSolution = subtract(numOne, numTwo);
+        return operateSolution;
     } else if (operator == '*') {
-        multiply(numOne, numTwo);
+        let operateSolution = multiply(numOne, numTwo);
+        return operateSolution;
     } else if (operator == '/') {
-        divide(numOne, numTwo);
+        let operateSolution = divide(numOne, numTwo);
+        return operateSolution;
     }
+    
 };
 
 const buttonArray = [
@@ -51,6 +56,14 @@ buttonClick.forEach(button => {
         calculatorArray.push(button.textContent);
 
     })
+});
+
+let solutionClick = document.querySelector(".button\\=");
+solutionClick.addEventListener('click', function() {
+    solution = operate(parseInt(calculatorArray[0]), calculatorArray[1], parseInt(calculatorArray[2]));
+    document.getElementById('display').textContent = solution;
+    calculatorArray.length = 0;
+    solution = null;
 });
 
 
