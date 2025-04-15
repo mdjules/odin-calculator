@@ -55,7 +55,6 @@ buttonClick.forEach(button => {
     button.addEventListener('click', function(){
         displayString += button.textContent;
         document.getElementById('display').textContent = displayString;
-        //calculatorArray.push(button.textContent);
 
     })
 });
@@ -64,19 +63,32 @@ let operatorButtonClick = document.querySelectorAll('.button\\/, .button\\+, .bu
 operatorButtonClick.forEach(button => {
     button.addEventListener('click', function(){
         calculatorArray.push(displayString.slice(0, -1));
-        calculatorArray.push(displayString.slice(-1));
-        displayString = '';
+        calculatorArray[1] = button.textContent;
+
 
     })
 })
 
 let solutionClick = document.querySelector(".button\\=");
 solutionClick.addEventListener('click', function() {
-    calculatorArray.push(displayString);
-    solution = operate(parseInt(calculatorArray[0]), calculatorArray[1], parseInt(calculatorArray[2]));
+
+    const operatorIndex = displayString.search(/[+\-*/]/); //search for index of operator
+
+    if (operatorIndex === -1) return; //no operator returns nothing
+
+    let secondNum = displayString.slice(operatorIndex + 1); //slice string based on operators position and return the rest for multi digit numbers
+
+    calculatorArray.push(secondNum); //add second number to the calculator array
+
+    
+    solution = operate(parseFloat(calculatorArray[0]), calculatorArray[1], parseFloat(calculatorArray[2]));
+    solution = Number(solution.toFixed(1)); //round to 1 decimal places
     document.getElementById('display').textContent = solution;
-    calculatorArray.length = 0;
+    
+    calculatorArray[0] = solution; //first element of the array becomes the previous solution so chained solutions can be performed
+    calculatorArray.splice(1);
     solution = null;
+    displayString = ""
 });
 
 let clearClick = document.querySelector('.buttonAC');
@@ -85,56 +97,6 @@ clearClick.addEventListener('click', function() {
     displayString = '';
     solution = null;
     calculatorArray.length = 0;
-})
+});
 
-
-
-
-/*for (let i = 1; i < numberOfButtons; i++) {
-   let myButtons = document.createElement('button');
-   myButtons.classList.add('myButtons');
-
-   if (i === 1) {
-    myButtons.textContent = "AC";
-   } else if (i === 2) {
-    myButtons.textContent = "+/-";
-   }
-     else if (i === 3) {
-        myButtons.textContent = "%";
-     }
-     else if (i === 4) {
-        myButtons.textContent = "/";
-     }
-     else if (i > 4 && i <= 7) {
-        myButtons.textContent = `${i+2}`;
-     }
-     else if (i === 8) {
-        myButtons.textContent = "*";
-     }
-     else if (i > 8 && i <= 11) {
-        myButtons.textContent = `${i-5}`;
-     }
-     else if (i === 12) {
-        myButtons.textContent = "-";
-     }
-     else if (i > 12 && i <= 15) {
-        myButtons.textContent = `${i-12}`;
-     }
-     else if (i === 16) {
-        myButtons.textContent = "+";
-     }
-     else if (i === 17) {
-        myButtons.textContent = `${i-17}`;
-     }
-     else if (i === 18) {
-        myButtons.textContent = ".";
-     }
-     else if (i === 19) {
-        myButtons.textContent = "=";
-     }
-
-     document.getElementById('buttons').appendChild(myButtons);
-
-
-}*/
 
