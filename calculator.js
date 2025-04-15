@@ -79,6 +79,13 @@ solutionClick.addEventListener('click', function() {
     solution = null;
 });
 
+let clearClick = document.querySelector('.buttonAC');
+clearClick.addEventListener('click', function() {
+    document.getElementById('display').textContent = "";
+    displayString = '';
+    solution = null;
+    calculatorArray.length = 0;
+})
 
 
 
