@@ -25,6 +25,7 @@
 #buttons {
     width: 210px;
     height: 260px;
+    
 }
 
 .myButtons {
@@ -36,4 +37,11 @@
 .button0 {
     width: 100px;
     height: 50px;
+}
+
+.operatorButtons:active {
+    background-color: rgb(236, 146, 146);
+}
+.button\= {
+    background-color: yellow;
 }
